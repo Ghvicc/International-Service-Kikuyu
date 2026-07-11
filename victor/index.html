@@ -254,7 +254,6 @@ transition:3.5s ease;
 
 
 
-
 .scene.active h1,
 .scene.active p,
 .scene.active .role{
@@ -511,6 +510,7 @@ culture and sustainable service.
 
 
 
+
 <!-- THEME -->
 
 <div class="scene">
@@ -553,6 +553,7 @@ Serving communities.
 
 
 
+
 <!-- LEADER TEMPLATE 1 -->
 
 <div class="scene">
@@ -569,7 +570,7 @@ Serving communities.
 
 
 <div class="profile">
-    <img src="attachments/1  new.jpeg" alt="Leader Profile" >
+    <img src="https://raw.githubusercontent.com/Ghvicc/International-Service-Kikuyu/main/victor/attachments/1%20%20new.jpeg" alt="Leader Profile" >
 </div>
 
 
@@ -635,7 +636,7 @@ Strategic leadership of the committee.
 
 
 <div class="profile">
-    <img src="attachments/2.png" alt="Leader Profile">
+    <img src="https://raw.githubusercontent.com/Ghvicc/International-Service-Kikuyu/main/victor/attachments/2.png" alt="Leader Profile">
 </div>
 
 
@@ -698,7 +699,7 @@ Strengthening connections within Kenya.
 <div class="leader">
 
 <div class="profile">
-    <img src="attachments/3.png" alt="Leader Profile">
+    <img src="https://raw.githubusercontent.com/Ghvicc/International-Service-Kikuyu/main/victor/attachments/3.png" alt="Leader Profile">
 </div>
 
 
@@ -750,7 +751,7 @@ Connecting the world through collaboration.
 
 <div class="scene">
 
-<src="images/community.jpg">
+<img src="images/community.jpg">
 
 <div class="overlay"></div>
 
@@ -762,7 +763,7 @@ Connecting the world through collaboration.
 
 
 <div class="profile">
-    <img src="attachments/4.jpeg" alt="Leader Profile">
+    <img src="https://raw.githubusercontent.com/Ghvicc/International-Service-Kikuyu/main/victor/attachments/4.jpeg" alt="Leader Profile">
 </div>
 
 
@@ -824,7 +825,7 @@ Celebrating diversity and friendship.
 <div class="leader">
 
 <div class="profile">
-    <img src="attachments/5.new.png" alt="Leader Profile">
+    <img src="https://raw.githubusercontent.com/Ghvicc/International-Service-Kikuyu/main/victor/attachments/5.new.png" alt="Leader Profile">
 </div>
 
 
@@ -891,7 +892,7 @@ Keeping partnerships connected.
 
 
 <div class="profile">
-    <img src="attachments/6. new.png" alt="Leader Profile">
+    <img src="https://raw.githubusercontent.com/Ghvicc/International-Service-Kikuyu/main/victor/attachments/6.%20new.png" alt="Leader Profile">
 </div>
 
 
@@ -957,7 +958,7 @@ Turning activities into measurable impact.
 
 
 <div class="profile">
-    <img src="attachments/7.png" alt="Leader Profile">
+    <img src="https://raw.githubusercontent.com/Ghvicc/International-Service-Kikuyu/main/victor/attachments/7.png" alt="Leader Profile">
 </div>
 
 
@@ -1002,170 +1003,3 @@ Creating solutions that last.
 
 
 
-
-
-
-
-
-<!-- FINAL -->
-
-<div class="scene">
-
-<img src="images/team.jpg">
-
-<div class="overlay"></div>
-
-
-<div class="content">
-
-
-<div class="small">
-Our Purpose
-</div>
-
-
-<h1>
-One Committee.<br>
-One Mission.<br>
-One Lasting Impact.
-</h1>
-
-
-<p>
-
-To build meaningful partnerships,
-promote global understanding,
-and deliver sustainable service
-in our community and beyond.
-
-</p>
-
-
-</div>
-
-
-</div>
-
-
-
-
-
-</div>
-
-
-
-
-
-
-<script>
-
-
-const scenes=document.querySelectorAll(".scene");
-
-const fade=document.getElementById("fade");
-
-
-const timings=[
-
-7000,
-8000,
-10000,
-10000,
-10000,
-10000,
-10000,
-10000,
-10000
-
-];
-
-
-let index=0;
-
-
-
-function show(i){
-
-
-fade.classList.add("on");
-
-
-setTimeout(()=>{
-
-
-scenes.forEach(s=>
-s.classList.remove("active")
-);
-
-
-scenes[i].classList.add("active");
-
-
-
-setTimeout(()=>{
-
-fade.classList.remove("on");
-
-},500);
-
-
-
-},700);
-
-
-}
-
-
-
-function play(){
-
-
-show(index);
-
-
-
-setTimeout(()=>{
-
-
-index++;
-
-
-if(index>=scenes.length){
-
-index=0;
-
-}
-
-
-play();
-
-
-
-},timings[index]);
-
-
-}
-
-
-
-window.onload=()=>{
-
-
-setTimeout(()=>{
-
-play();
-
-},1200);
-
-
-};
-
-
-
-</script>
-
-
-
-</body>
-
-</html>
