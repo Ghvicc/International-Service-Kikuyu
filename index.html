@@ -476,7 +476,7 @@ ROTARACT CLUB OF KIKUYU
 <div class="scene active">
 
 
-<img src="https://raw.githubusercontent.com/Ghvicc/International-Service-Kikuyu/main/victor/attachments/2.png">
+<!-- <img src="https://raw.githubusercontent.com/Ghvicc/International-Service-Kikuyu/main/victor/attachments/2.png"> -->
 
 
 <div class="overlay"></div>
@@ -512,7 +512,7 @@ culture and sustainable service.
 
 <div class="scene">
 
-<img src="https://raw.githubusercontent.com/Ghvicc/International-Service-Kikuyu/main/victor/attachments/2.png">
+<!-- <img src="https://raw.githubusercontent.com/Ghvicc/International-Service-Kikuyu/main/victor/attachments/2.png"> -->
 
 <div class="overlay"></div>
 
@@ -549,7 +549,7 @@ Serving communities.
 
 <div class="scene">
 
-<img src="https://raw.githubusercontent.com/Ghvicc/International-Service-Kikuyu/main/victor/attachments/2.png">
+<!-- <img src="https://raw.githubusercontent.com/Ghvicc/International-Service-Kikuyu/main/victor/attachments/2.png"> -->
 
 <div class="overlay"></div>
 
@@ -610,7 +610,7 @@ Strategic leadership of the committee.
 
 <div class="scene">
 
-<img src="https://raw.githubusercontent.com/Ghvicc/International-Service-Kikuyu/main/victor/attachments/2.png">
+<!-- <img src="https://raw.githubusercontent.com/Ghvicc/International-Service-Kikuyu/main/victor/attachments/2.png"> -->
 
 <div class="overlay"></div>
 
@@ -670,7 +670,7 @@ Strengthening connections within Kenya.
 
 <div class="scene">
 
-<img src="https://raw.githubusercontent.com/Ghvicc/International-Service-Kikuyu/main/victor/attachments/2.png">
+<!-- <img src="https://raw.githubusercontent.com/Ghvicc/International-Service-Kikuyu/main/victor/attachments/2.png"> -->
 
 <div class="overlay"></div>
 
@@ -727,7 +727,7 @@ Connecting the world through collaboration.
 
 <div class="scene">
 
-<img src="https://raw.githubusercontent.com/Ghvicc/International-Service-Kikuyu/main/victor/attachments/2.png">
+<!-- <img src="https://raw.githubusercontent.com/Ghvicc/International-Service-Kikuyu/main/victor/attachments/2.png"> -->
 
 <div class="overlay"></div>
 
@@ -785,7 +785,7 @@ Celebrating diversity and friendship.
 
 <div class="scene">
 
-<img src="https://raw.githubusercontent.com/Ghvicc/International-Service-Kikuyu/main/victor/attachments/2.png">
+<!-- <img src="https://raw.githubusercontent.com/Ghvicc/International-Service-Kikuyu/main/victor/attachments/2.png"> -->
 
 <div class="overlay"></div>
 
@@ -846,7 +846,7 @@ Keeping partnerships connected.
 
 <div class="scene">
 
-<img src="https://raw.githubusercontent.com/Ghvicc/International-Service-Kikuyu/main/victor/attachments/2.png">
+<!-- <img src="https://raw.githubusercontent.com/Ghvicc/International-Service-Kikuyu/main/victor/attachments/2.png"> -->
 
 <div class="overlay"></div>
 
@@ -907,7 +907,7 @@ Turning activities into measurable impact.
 
 <div class="scene">
 
-<img src="https://raw.githubusercontent.com/Ghvicc/International-Service-Kikuyu/main/victor/attachments/2.png">
+<!-- <img src="https://raw.githubusercontent.com/Ghvicc/International-Service-Kikuyu/main/victor/attachments/2.png"> -->
 
 <div class="overlay"></div>
 
@@ -959,8 +959,6 @@ Creating solutions that last.
 
 </div>
 
-</div>
-
 
 </div>
 
@@ -1000,23 +998,21 @@ function nextScene() {
 }
 
 function updateProgress() {
-  progress.textContent = `${currentScene + 1} / ${scenes.length}`;
+  progress.textContent = `${document.querySelectorAll('.scene').length > 0 ? document.querySelectorAll('.scene').length : ''}`;
 }
 
-function autoPlay() {
-  setInterval(nextScene, SCENE_DURATION);
-}
+let sceneInterval = setInterval(nextScene, SCENE_DURATION);
 
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'ArrowRight') nextScene();
-  if (e.key === 'ArrowLeft') showScene((currentScene - 1 + scenes.length) % scenes.length);
+// Pause on hover
+[...document.querySelectorAll('.scene')].forEach((scene) => {
+  scene.addEventListener('mouseenter', () => clearInterval(sceneInterval));
+  scene.addEventListener('mouseleave', () => sceneInterval = setInterval(nextScene, SCENE_DURATION));
 });
 
+// Init
 updateProgress();
-autoPlay();
 
 </script>
 
 </body>
-
 </html>
