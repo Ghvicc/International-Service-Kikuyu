@@ -73,8 +73,8 @@ transform:scale(1.05);
 
 
 transition:
-opacity 2.5s ease,
-transform 7s ease;
+opacity 0.8s ease,
+transform 0s ease;
 
 
 pointer-events:none;
@@ -121,7 +121,7 @@ saturate(.85);
 transform:scale(1.1);
 
 
-transition:transform 8s ease;
+transition:transform 0s ease;
 
 }
 
@@ -207,7 +207,7 @@ opacity:0;
 
 transform:translateY(30px);
 
-transition:2.5s ease;
+transition:opacity 0.6s ease 0.2s, transform 0.6s ease 0.2s;
 
 color:#FFFFFF;
 
@@ -231,7 +231,7 @@ opacity:0;
 
 transform:translateY(30px);
 
-transition:3s ease;
+transition:opacity 0.6s ease 0.4s, transform 0.6s ease 0.4s;
 
 }
 
@@ -251,7 +251,7 @@ opacity:0;
 
 transform:translateY(30px);
 
-transition:3.5s ease;
+transition:opacity 0.6s ease 0.6s, transform 0.6s ease 0.6s;
 
 }
 
@@ -387,7 +387,7 @@ opacity:0;
 
 pointer-events:none;
 
-transition:opacity 1.5s ease;
+transition:none;
 
 z-index:20;
 
@@ -967,9 +967,7 @@ Creating solutions that last.
 
 const scenes = document.querySelectorAll('.scene');
 const fade = document.getElementById('fade');
-const progress = document.querySelector('.progress');
-const SCENE_DURATION = 8000;
-const FADE_DURATION = 1500;
+const SCENE_DURATION = 6000;
 
 let currentScene = 0;
 let isTransitioning = false;
@@ -979,18 +977,18 @@ function showScene(index) {
   if (isTransitioning) return;
   
   isTransitioning = true;
-  fade.classList.add('on');
   
+  // Remove active class from current scene
+  scenes[currentScene].classList.remove('active');
+  
+  // Set the new scene as active
+  currentScene = index;
+  scenes[currentScene].classList.add('active');
+  
+  // Re-enable transitions after a brief delay
   setTimeout(() => {
-    scenes.forEach((scene, i) => {
-      scene.classList.toggle('active', i === index);
-    });
-    
-    currentScene = index;
-    
-    fade.classList.remove('on');
     isTransitioning = false;
-  }, FADE_DURATION);
+  }, 100);
 }
 
 function nextScene() {
@@ -1002,14 +1000,15 @@ function startAutoplay() {
 }
 
 function stopAutoplay() {
-  clearInterval(sceneInterval);
+  if (sceneInterval) {
+    clearInterval(sceneInterval);
+    sceneInterval = null;
+  }
 }
 
-// Pause on hover
-[...document.querySelectorAll('.scene')].forEach((scene) => {
-  scene.addEventListener('mouseenter', stopAutoplay);
-  scene.addEventListener('mouseleave', startAutoplay);
-});
+// Pause on hover - COMMENTED OUT
+// document.getElementById('stage').addEventListener('mouseenter', stopAutoplay);
+// document.getElementById('stage').addEventListener('mouseleave', startAutoplay);
 
 // Start autoplay
 startAutoplay();
