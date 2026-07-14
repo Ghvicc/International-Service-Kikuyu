@@ -973,6 +973,7 @@ const FADE_DURATION = 1500;
 
 let currentScene = 0;
 let isTransitioning = false;
+let sceneInterval = null;
 
 function showScene(index) {
   if (isTransitioning) return;
@@ -986,7 +987,6 @@ function showScene(index) {
     });
     
     currentScene = index;
-    updateProgress();
     
     fade.classList.remove('on');
     isTransitioning = false;
@@ -997,20 +997,22 @@ function nextScene() {
   showScene((currentScene + 1) % scenes.length);
 }
 
-function updateProgress() {
-  progress.textContent = `${document.querySelectorAll('.scene').length > 0 ? document.querySelectorAll('.scene').length : ''}`;
+function startAutoplay() {
+  sceneInterval = setInterval(nextScene, SCENE_DURATION);
 }
 
-let sceneInterval = setInterval(nextScene, SCENE_DURATION);
+function stopAutoplay() {
+  clearInterval(sceneInterval);
+}
 
 // Pause on hover
 [...document.querySelectorAll('.scene')].forEach((scene) => {
-  scene.addEventListener('mouseenter', () => clearInterval(sceneInterval));
-  scene.addEventListener('mouseleave', () => sceneInterval = setInterval(nextScene, SCENE_DURATION));
+  scene.addEventListener('mouseenter', stopAutoplay);
+  scene.addEventListener('mouseleave', startAutoplay);
 });
 
-// Init
-updateProgress();
+// Start autoplay
+startAutoplay();
 
 </script>
 
